@@ -9,38 +9,140 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
+import { Route as ProblemsIndexRouteImport } from './routes/problems.index'
+import { Route as CurriculumIndexRouteImport } from './routes/curriculum.index'
+import { Route as ProblemsSlugRouteImport } from './routes/problems.$slug'
+import { Route as CurriculumModuleIndexRouteImport } from './routes/curriculum.$module.index'
+import { Route as CurriculumModuleLessonRouteImport } from './routes/curriculum.$module.$lesson'
 
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
+  id: '/projects/',
+  path: '/projects/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProblemsIndexRoute = ProblemsIndexRouteImport.update({
+  id: '/problems/',
+  path: '/problems/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CurriculumIndexRoute = CurriculumIndexRouteImport.update({
+  id: '/curriculum/',
+  path: '/curriculum/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProblemsSlugRoute = ProblemsSlugRouteImport.update({
+  id: '/problems/$slug',
+  path: '/problems/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CurriculumModuleIndexRoute = CurriculumModuleIndexRouteImport.update({
+  id: '/curriculum/$module/',
+  path: '/curriculum/$module/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CurriculumModuleLessonRoute = CurriculumModuleLessonRouteImport.update({
+  id: '/curriculum/$module/$lesson',
+  path: '/curriculum/$module/$lesson',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/pricing': typeof PricingRoute
+  '/problems/$slug': typeof ProblemsSlugRoute
+  '/curriculum/': typeof CurriculumIndexRoute
+  '/problems/': typeof ProblemsIndexRoute
+  '/projects/': typeof ProjectsIndexRoute
+  '/curriculum/$module/$lesson': typeof CurriculumModuleLessonRoute
+  '/curriculum/$module/': typeof CurriculumModuleIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/pricing': typeof PricingRoute
+  '/problems/$slug': typeof ProblemsSlugRoute
+  '/curriculum': typeof CurriculumIndexRoute
+  '/problems': typeof ProblemsIndexRoute
+  '/projects': typeof ProjectsIndexRoute
+  '/curriculum/$module/$lesson': typeof CurriculumModuleLessonRoute
+  '/curriculum/$module': typeof CurriculumModuleIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/pricing': typeof PricingRoute
+  '/problems/$slug': typeof ProblemsSlugRoute
+  '/curriculum/': typeof CurriculumIndexRoute
+  '/problems/': typeof ProblemsIndexRoute
+  '/projects/': typeof ProjectsIndexRoute
+  '/curriculum/$module/$lesson': typeof CurriculumModuleLessonRoute
+  '/curriculum/$module/': typeof CurriculumModuleIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/pricing'
+    | '/problems/$slug'
+    | '/curriculum/'
+    | '/problems/'
+    | '/projects/'
+    | '/curriculum/$module/$lesson'
+    | '/curriculum/$module/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/pricing'
+    | '/problems/$slug'
+    | '/curriculum'
+    | '/problems'
+    | '/projects'
+    | '/curriculum/$module/$lesson'
+    | '/curriculum/$module'
+  id:
+    | '__root__'
+    | '/'
+    | '/pricing'
+    | '/problems/$slug'
+    | '/curriculum/'
+    | '/problems/'
+    | '/projects/'
+    | '/curriculum/$module/$lesson'
+    | '/curriculum/$module/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PricingRoute: typeof PricingRoute
+  ProblemsSlugRoute: typeof ProblemsSlugRoute
+  CurriculumIndexRoute: typeof CurriculumIndexRoute
+  ProblemsIndexRoute: typeof ProblemsIndexRoute
+  ProjectsIndexRoute: typeof ProjectsIndexRoute
+  CurriculumModuleLessonRoute: typeof CurriculumModuleLessonRoute
+  CurriculumModuleIndexRoute: typeof CurriculumModuleIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +150,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projects/': {
+      id: '/projects/'
+      path: '/projects'
+      fullPath: '/projects/'
+      preLoaderRoute: typeof ProjectsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/problems/': {
+      id: '/problems/'
+      path: '/problems'
+      fullPath: '/problems/'
+      preLoaderRoute: typeof ProblemsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/curriculum/': {
+      id: '/curriculum/'
+      path: '/curriculum'
+      fullPath: '/curriculum/'
+      preLoaderRoute: typeof CurriculumIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/problems/$slug': {
+      id: '/problems/$slug'
+      path: '/problems/$slug'
+      fullPath: '/problems/$slug'
+      preLoaderRoute: typeof ProblemsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/curriculum/$module/': {
+      id: '/curriculum/$module/'
+      path: '/curriculum/$module'
+      fullPath: '/curriculum/$module/'
+      preLoaderRoute: typeof CurriculumModuleIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/curriculum/$module/$lesson': {
+      id: '/curriculum/$module/$lesson'
+      path: '/curriculum/$module/$lesson'
+      fullPath: '/curriculum/$module/$lesson'
+      preLoaderRoute: typeof CurriculumModuleLessonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PricingRoute: PricingRoute,
+  ProblemsSlugRoute: ProblemsSlugRoute,
+  CurriculumIndexRoute: CurriculumIndexRoute,
+  ProblemsIndexRoute: ProblemsIndexRoute,
+  ProjectsIndexRoute: ProjectsIndexRoute,
+  CurriculumModuleLessonRoute: CurriculumModuleLessonRoute,
+  CurriculumModuleIndexRoute: CurriculumModuleIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
