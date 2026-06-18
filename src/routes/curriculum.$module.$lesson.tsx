@@ -50,7 +50,13 @@ export const Route = createFileRoute("/curriculum/$module/$lesson")({
 });
 
 function LessonPage() {
-  const { module: m, lesson, prev, next } = Route.useLoaderData();
+  const { module: m, lesson, prev, next } = Route.useLoaderData() as {
+    module: Module;
+    lesson: Lesson;
+    prev: Lesson | null;
+    next: Lesson | null;
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <SiteNav />

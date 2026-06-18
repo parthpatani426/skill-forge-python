@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/SiteNav";
 import { CodeBlock } from "@/components/CodeBlock";
-import { problems } from "@/lib/curriculum";
+import { problems, type Problem } from "@/lib/curriculum";
 
 export const Route = createFileRoute("/problems/$slug")({
   head: ({ params }) => {
@@ -42,7 +42,7 @@ export const Route = createFileRoute("/problems/$slug")({
 });
 
 function ProblemPage() {
-  const { problem: p } = Route.useLoaderData();
+  const { problem: p } = Route.useLoaderData() as { problem: Problem };
   return (
     <div className="min-h-screen bg-background">
       <SiteNav />
