@@ -171,13 +171,13 @@ function Landing() {
       <section className="border-t border-hairline px-6 py-24 text-center lg:px-8">
         <h2 className="mb-6 text-4xl font-bold text-foreground">Ready to go from scratch to advanced?</h2>
         <p className="mx-auto mb-10 max-w-xl text-muted-foreground">
-          Join thousands of developers mastering Python with production-first mental models.
+          Open access to the full curriculum, practice labs, and projects. No paywalls.
         </p>
         <Link
           to="/curriculum"
           className="inline-block rounded-xl bg-emerald px-12 py-5 text-lg font-black text-background transition-all hover:brightness-110 active:scale-95"
         >
-          Start Module 01 — Free
+          Start Learning — Free & Open
         </Link>
       </section>
 
