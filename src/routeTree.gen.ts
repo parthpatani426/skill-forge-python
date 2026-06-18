@@ -9,7 +9,6 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
 import { Route as ProblemsIndexRouteImport } from './routes/problems.index'
@@ -18,11 +17,6 @@ import { Route as ProblemsSlugRouteImport } from './routes/problems.$slug'
 import { Route as CurriculumModuleIndexRouteImport } from './routes/curriculum.$module.index'
 import { Route as CurriculumModuleLessonRouteImport } from './routes/curriculum.$module.$lesson'
 
-const PricingRoute = PricingRouteImport.update({
-  id: '/pricing',
-  path: '/pricing',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -61,7 +55,6 @@ const CurriculumModuleLessonRoute = CurriculumModuleLessonRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/pricing': typeof PricingRoute
   '/problems/$slug': typeof ProblemsSlugRoute
   '/curriculum/': typeof CurriculumIndexRoute
   '/problems/': typeof ProblemsIndexRoute
@@ -71,7 +64,6 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/pricing': typeof PricingRoute
   '/problems/$slug': typeof ProblemsSlugRoute
   '/curriculum': typeof CurriculumIndexRoute
   '/problems': typeof ProblemsIndexRoute
@@ -82,7 +74,6 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/pricing': typeof PricingRoute
   '/problems/$slug': typeof ProblemsSlugRoute
   '/curriculum/': typeof CurriculumIndexRoute
   '/problems/': typeof ProblemsIndexRoute
@@ -94,7 +85,6 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/pricing'
     | '/problems/$slug'
     | '/curriculum/'
     | '/problems/'
@@ -104,7 +94,6 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/pricing'
     | '/problems/$slug'
     | '/curriculum'
     | '/problems'
@@ -114,7 +103,6 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/pricing'
     | '/problems/$slug'
     | '/curriculum/'
     | '/problems/'
@@ -125,7 +113,6 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  PricingRoute: typeof PricingRoute
   ProblemsSlugRoute: typeof ProblemsSlugRoute
   CurriculumIndexRoute: typeof CurriculumIndexRoute
   ProblemsIndexRoute: typeof ProblemsIndexRoute
@@ -136,13 +123,6 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/pricing': {
-      id: '/pricing'
-      path: '/pricing'
-      fullPath: '/pricing'
-      preLoaderRoute: typeof PricingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -197,7 +177,6 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  PricingRoute: PricingRoute,
   ProblemsSlugRoute: ProblemsSlugRoute,
   CurriculumIndexRoute: CurriculumIndexRoute,
   ProblemsIndexRoute: ProblemsIndexRoute,
