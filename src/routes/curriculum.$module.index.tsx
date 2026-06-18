@@ -43,8 +43,9 @@ export const Route = createFileRoute("/curriculum/$module/")({
 function ModulePage() {
   const data = Route.useLoaderData() as ReturnType<typeof Route.useLoaderData>;
   const m = data.module;
-
+  return (
     <div className="min-h-screen bg-background">
+
       <SiteNav />
       <main className="mx-auto max-w-5xl px-6 py-16 lg:px-8 lg:py-24">
         <Link to="/curriculum" className="font-mono text-xs text-muted-foreground hover:text-emerald">
