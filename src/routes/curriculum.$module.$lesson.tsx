@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/SiteNav";
 import { CodeBlock } from "@/components/CodeBlock";
-import { curriculum } from "@/lib/curriculum";
+import { curriculum, type Module, type Lesson } from "@/lib/curriculum";
 
 export const Route = createFileRoute("/curriculum/$module/$lesson")({
   head: ({ params }) => {

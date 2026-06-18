@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/SiteNav";
-import { curriculum } from "@/lib/curriculum";
+import { curriculum, type Module } from "@/lib/curriculum";
 
 export const Route = createFileRoute("/curriculum/$module/")({
   head: ({ params }) => {
@@ -41,10 +41,10 @@ export const Route = createFileRoute("/curriculum/$module/")({
 });
 
 function ModulePage() {
-  const data = Route.useLoaderData() as ReturnType<typeof Route.useLoaderData>;
-  const m = data.module;
+  const { module: m } = Route.useLoaderData() as { module: Module };
   return (
     <div className="min-h-screen bg-background">
+
 
       <SiteNav />
       <main className="mx-auto max-w-5xl px-6 py-16 lg:px-8 lg:py-24">
