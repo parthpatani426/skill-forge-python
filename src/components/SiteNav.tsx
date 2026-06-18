@@ -20,9 +20,6 @@ export function SiteNav() {
           <Link to="/projects" className="transition-colors hover:text-emerald" activeProps={{ className: "text-foreground" }}>
             Projects
           </Link>
-          <Link to="/pricing" className="transition-colors hover:text-emerald" activeProps={{ className: "text-foreground" }}>
-            Pricing
-          </Link>
         </div>
         <Link
           to="/curriculum"
