@@ -17,6 +17,9 @@ export function SiteNav() {
           <Link to="/problems" className="transition-colors hover:text-emerald" activeProps={{ className: "text-foreground" }}>
             Practice Labs
           </Link>
+          <Link to="/reference" className="transition-colors hover:text-emerald" activeProps={{ className: "text-foreground" }}>
+            Reference
+          </Link>
           <Link to="/projects" className="transition-colors hover:text-emerald" activeProps={{ className: "text-foreground" }}>
             Projects
           </Link>
