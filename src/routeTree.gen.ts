@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ReferenceIndexRouteImport } from './routes/reference.index'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
 import { Route as ProblemsIndexRouteImport } from './routes/problems.index'
 import { Route as CurriculumIndexRouteImport } from './routes/curriculum.index'
@@ -20,6 +21,11 @@ import { Route as CurriculumModuleLessonRouteImport } from './routes/curriculum.
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReferenceIndexRoute = ReferenceIndexRouteImport.update({
+  id: '/reference/',
+  path: '/reference/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/curriculum/': typeof CurriculumIndexRoute
   '/problems/': typeof ProblemsIndexRoute
   '/projects/': typeof ProjectsIndexRoute
+  '/reference/': typeof ReferenceIndexRoute
   '/curriculum/$module/$lesson': typeof CurriculumModuleLessonRoute
   '/curriculum/$module/': typeof CurriculumModuleIndexRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/curriculum': typeof CurriculumIndexRoute
   '/problems': typeof ProblemsIndexRoute
   '/projects': typeof ProjectsIndexRoute
+  '/reference': typeof ReferenceIndexRoute
   '/curriculum/$module/$lesson': typeof CurriculumModuleLessonRoute
   '/curriculum/$module': typeof CurriculumModuleIndexRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/curriculum/': typeof CurriculumIndexRoute
   '/problems/': typeof ProblemsIndexRoute
   '/projects/': typeof ProjectsIndexRoute
+  '/reference/': typeof ReferenceIndexRoute
   '/curriculum/$module/$lesson': typeof CurriculumModuleLessonRoute
   '/curriculum/$module/': typeof CurriculumModuleIndexRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/curriculum/'
     | '/problems/'
     | '/projects/'
+    | '/reference/'
     | '/curriculum/$module/$lesson'
     | '/curriculum/$module/'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/curriculum'
     | '/problems'
     | '/projects'
+    | '/reference'
     | '/curriculum/$module/$lesson'
     | '/curriculum/$module'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/curriculum/'
     | '/problems/'
     | '/projects/'
+    | '/reference/'
     | '/curriculum/$module/$lesson'
     | '/curriculum/$module/'
   fileRoutesById: FileRoutesById
@@ -117,6 +129,7 @@ export interface RootRouteChildren {
   CurriculumIndexRoute: typeof CurriculumIndexRoute
   ProblemsIndexRoute: typeof ProblemsIndexRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
+  ReferenceIndexRoute: typeof ReferenceIndexRoute
   CurriculumModuleLessonRoute: typeof CurriculumModuleLessonRoute
   CurriculumModuleIndexRoute: typeof CurriculumModuleIndexRoute
 }
@@ -128,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reference/': {
+      id: '/reference/'
+      path: '/reference'
+      fullPath: '/reference/'
+      preLoaderRoute: typeof ReferenceIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/': {
@@ -181,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   CurriculumIndexRoute: CurriculumIndexRoute,
   ProblemsIndexRoute: ProblemsIndexRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
+  ReferenceIndexRoute: ReferenceIndexRoute,
   CurriculumModuleLessonRoute: CurriculumModuleLessonRoute,
   CurriculumModuleIndexRoute: CurriculumModuleIndexRoute,
 }

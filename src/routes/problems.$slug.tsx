@@ -75,6 +75,17 @@ function ProblemPage() {
           <h2 className="mb-3 font-mono text-xs uppercase tracking-widest text-emerald">Pythonic Solution</h2>
           <CodeBlock code={p.solution} filename={`${p.slug}.py`} />
         </section>
+
+        {p.explanation && (
+          <section className="mt-10">
+            <h2 className="mb-3 font-mono text-xs uppercase tracking-widest text-emerald">
+              How the solution works
+            </h2>
+            <p className="rounded-lg border-l-2 border-emerald bg-surface/40 p-4 text-base leading-relaxed text-foreground/90">
+              {p.explanation}
+            </p>
+          </section>
+        )}
       </main>
       <SiteFooter />
     </div>
