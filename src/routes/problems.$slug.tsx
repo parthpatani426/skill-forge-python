@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/SiteNav";
-import { CodeBlock } from "@/components/CodeBlock";
+import { RunnableCode } from "@/components/RunnableCode";
 import { problems, type Problem } from "@/lib/curriculum";
 
 export const Route = createFileRoute("/problems/$slug")({
