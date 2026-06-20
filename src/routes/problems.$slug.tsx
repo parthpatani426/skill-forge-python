@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/SiteNav";
-import { CodeBlock } from "@/components/CodeBlock";
+import { RunnableCode } from "@/components/RunnableCode";
 import { problems, type Problem } from "@/lib/curriculum";
 
 export const Route = createFileRoute("/problems/$slug")({
@@ -73,7 +73,7 @@ function ProblemPage() {
 
         <section className="mt-10">
           <h2 className="mb-3 font-mono text-xs uppercase tracking-widest text-emerald">Pythonic Solution</h2>
-          <CodeBlock code={p.solution} filename={`${p.slug}.py`} />
+          <RunnableCode code={p.solution} filename={`${p.slug}.py`} />
         </section>
 
         {p.explanation && (
