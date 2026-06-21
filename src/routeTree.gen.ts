@@ -14,6 +14,7 @@ import { Route as ReferenceIndexRouteImport } from './routes/reference.index'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
 import { Route as ProblemsIndexRouteImport } from './routes/problems.index'
 import { Route as CurriculumIndexRouteImport } from './routes/curriculum.index'
+import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
 import { Route as ProblemsSlugRouteImport } from './routes/problems.$slug'
 import { Route as CurriculumModuleIndexRouteImport } from './routes/curriculum.$module.index'
 import { Route as CurriculumModuleLessonRouteImport } from './routes/curriculum.$module.$lesson'
@@ -43,6 +44,11 @@ const CurriculumIndexRoute = CurriculumIndexRouteImport.update({
   path: '/curriculum/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
+  id: '/projects/$slug',
+  path: '/projects/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProblemsSlugRoute = ProblemsSlugRouteImport.update({
   id: '/problems/$slug',
   path: '/problems/$slug',
@@ -62,6 +68,7 @@ const CurriculumModuleLessonRoute = CurriculumModuleLessonRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/problems/$slug': typeof ProblemsSlugRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
   '/curriculum/': typeof CurriculumIndexRoute
   '/problems/': typeof ProblemsIndexRoute
   '/projects/': typeof ProjectsIndexRoute
@@ -72,6 +79,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/problems/$slug': typeof ProblemsSlugRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
   '/curriculum': typeof CurriculumIndexRoute
   '/problems': typeof ProblemsIndexRoute
   '/projects': typeof ProjectsIndexRoute
@@ -83,6 +91,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/problems/$slug': typeof ProblemsSlugRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
   '/curriculum/': typeof CurriculumIndexRoute
   '/problems/': typeof ProblemsIndexRoute
   '/projects/': typeof ProjectsIndexRoute
@@ -95,6 +104,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/problems/$slug'
+    | '/projects/$slug'
     | '/curriculum/'
     | '/problems/'
     | '/projects/'
@@ -105,6 +115,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/problems/$slug'
+    | '/projects/$slug'
     | '/curriculum'
     | '/problems'
     | '/projects'
@@ -115,6 +126,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/problems/$slug'
+    | '/projects/$slug'
     | '/curriculum/'
     | '/problems/'
     | '/projects/'
@@ -126,6 +138,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ProblemsSlugRoute: typeof ProblemsSlugRoute
+  ProjectsSlugRoute: typeof ProjectsSlugRoute
   CurriculumIndexRoute: typeof CurriculumIndexRoute
   ProblemsIndexRoute: typeof ProblemsIndexRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
@@ -171,6 +184,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CurriculumIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projects/$slug': {
+      id: '/projects/$slug'
+      path: '/projects/$slug'
+      fullPath: '/projects/$slug'
+      preLoaderRoute: typeof ProjectsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/problems/$slug': {
       id: '/problems/$slug'
       path: '/problems/$slug'
@@ -198,6 +218,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ProblemsSlugRoute: ProblemsSlugRoute,
+  ProjectsSlugRoute: ProjectsSlugRoute,
   CurriculumIndexRoute: CurriculumIndexRoute,
   ProblemsIndexRoute: ProblemsIndexRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
