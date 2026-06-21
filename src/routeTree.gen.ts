@@ -54,11 +54,6 @@ const ProblemsSlugRoute = ProblemsSlugRouteImport.update({
   path: '/problems/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
-  id: '/projects/$slug',
-  path: '/projects/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const CurriculumModuleIndexRoute = CurriculumModuleIndexRouteImport.update({
   id: '/curriculum/$module/',
   path: '/curriculum/$module/',
