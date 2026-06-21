@@ -67,7 +67,7 @@ function ProjectDetail() {
         <h1 className="mb-3 text-4xl font-bold tracking-tight lg:text-5xl">{p.title}</h1>
         <p className="mb-6 max-w-3xl text-lg text-muted-foreground">{p.summary}</p>
         <div className="mb-10 flex flex-wrap gap-2">
-          {p.stack.map((s) => (
+          {p.stack.map((s: string) => (
             <span key={s} className="rounded border border-border bg-background px-2 py-0.5 font-mono text-xs text-muted-foreground">
               {s}
             </span>
