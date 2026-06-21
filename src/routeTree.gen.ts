@@ -16,6 +16,7 @@ import { Route as ProblemsIndexRouteImport } from './routes/problems.index'
 import { Route as CurriculumIndexRouteImport } from './routes/curriculum.index'
 import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
 import { Route as ProblemsSlugRouteImport } from './routes/problems.$slug'
+import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
 import { Route as CurriculumModuleIndexRouteImport } from './routes/curriculum.$module.index'
 import { Route as CurriculumModuleLessonRouteImport } from './routes/curriculum.$module.$lesson'
 
