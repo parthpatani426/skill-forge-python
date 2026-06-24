@@ -183,7 +183,10 @@ function Landing() {
         </Link>
       </section>
 
+      <DownloadBundleCard />
+
       <SiteFooter />
     </div>
+
   );
 }
