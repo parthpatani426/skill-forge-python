@@ -1,4 +1,6 @@
 import { Link } from "@tanstack/react-router";
+import { BUNDLE } from "./DownloadBundle";
+
 
 export function SiteNav() {
   return (
