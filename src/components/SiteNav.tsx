@@ -1,4 +1,6 @@
 import { Link } from "@tanstack/react-router";
+import { BUNDLE } from "./DownloadBundle";
+
 
 export function SiteNav() {
   return (
@@ -24,12 +26,25 @@ export function SiteNav() {
             Projects
           </Link>
         </div>
-        <Link
-          to="/curriculum"
-          className="rounded-full bg-emerald px-5 py-2 text-sm font-bold text-background transition-all hover:brightness-110"
-        >
-          Start Learning
-        </Link>
+        <div className="flex items-center gap-2">
+          <a
+            href={BUNDLE.href}
+            download={BUNDLE.filename}
+            title={`Download full project source (v${BUNDLE.version}, ${BUNDLE.sizeLabel})`}
+            className="hidden items-center gap-2 rounded-full border border-emerald/40 px-3.5 py-1.5 font-mono text-[11px] uppercase text-emerald transition-all hover:bg-emerald/10 sm:inline-flex"
+          >
+            <span aria-hidden>⬇</span>
+            <span>zip</span>
+            <span className="text-muted-foreground">v{BUNDLE.version}</span>
+          </a>
+          <Link
+            to="/curriculum"
+            className="rounded-full bg-emerald px-5 py-2 text-sm font-bold text-background transition-all hover:brightness-110"
+          >
+            Start Learning
+          </Link>
+        </div>
+
       </div>
     </nav>
   );

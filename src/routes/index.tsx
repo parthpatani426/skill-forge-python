@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/SiteNav";
+import { DownloadBundleCard } from "@/components/DownloadBundle";
+
 import { CodeBlock } from "@/components/CodeBlock";
 import { curriculum, problems } from "@/lib/curriculum";
 import keyboardImg from "@/assets/keyboard.jpg";
@@ -181,7 +183,10 @@ function Landing() {
         </Link>
       </section>
 
+      <DownloadBundleCard />
+
       <SiteFooter />
     </div>
+
   );
 }
