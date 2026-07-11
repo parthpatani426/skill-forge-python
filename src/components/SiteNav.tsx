@@ -25,6 +25,9 @@ export function SiteNav() {
           <Link to="/projects" className="transition-colors hover:text-emerald" activeProps={{ className: "text-foreground" }}>
             Projects
           </Link>
+          <Link to="/tutor" className="transition-colors hover:text-emerald" activeProps={{ className: "text-foreground" }}>
+            AI Tutor
+          </Link>
         </div>
         <div className="flex items-center gap-2">
           <a
