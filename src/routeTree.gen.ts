@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TutorRouteImport } from './routes/tutor'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ReferenceIndexRouteImport } from './routes/reference.index'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
@@ -16,9 +17,15 @@ import { Route as ProblemsIndexRouteImport } from './routes/problems.index'
 import { Route as CurriculumIndexRouteImport } from './routes/curriculum.index'
 import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
 import { Route as ProblemsSlugRouteImport } from './routes/problems.$slug'
+import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as CurriculumModuleIndexRouteImport } from './routes/curriculum.$module.index'
 import { Route as CurriculumModuleLessonRouteImport } from './routes/curriculum.$module.$lesson'
 
+const TutorRoute = TutorRouteImport.update({
+  id: '/tutor',
+  path: '/tutor',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -54,6 +61,11 @@ const ProblemsSlugRoute = ProblemsSlugRouteImport.update({
   path: '/problems/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiChatRoute = ApiChatRouteImport.update({
+  id: '/api/chat',
+  path: '/api/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CurriculumModuleIndexRoute = CurriculumModuleIndexRouteImport.update({
   id: '/curriculum/$module/',
   path: '/curriculum/$module/',
@@ -67,6 +79,8 @@ const CurriculumModuleLessonRoute = CurriculumModuleLessonRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/tutor': typeof TutorRoute
+  '/api/chat': typeof ApiChatRoute
   '/problems/$slug': typeof ProblemsSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/curriculum/': typeof CurriculumIndexRoute
@@ -78,6 +92,8 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/tutor': typeof TutorRoute
+  '/api/chat': typeof ApiChatRoute
   '/problems/$slug': typeof ProblemsSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/curriculum': typeof CurriculumIndexRoute
@@ -90,6 +106,8 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/tutor': typeof TutorRoute
+  '/api/chat': typeof ApiChatRoute
   '/problems/$slug': typeof ProblemsSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/curriculum/': typeof CurriculumIndexRoute
@@ -103,6 +121,8 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/tutor'
+    | '/api/chat'
     | '/problems/$slug'
     | '/projects/$slug'
     | '/curriculum/'
@@ -114,6 +134,8 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/tutor'
+    | '/api/chat'
     | '/problems/$slug'
     | '/projects/$slug'
     | '/curriculum'
@@ -125,6 +147,8 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/tutor'
+    | '/api/chat'
     | '/problems/$slug'
     | '/projects/$slug'
     | '/curriculum/'
@@ -137,6 +161,8 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  TutorRoute: typeof TutorRoute
+  ApiChatRoute: typeof ApiChatRoute
   ProblemsSlugRoute: typeof ProblemsSlugRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
   CurriculumIndexRoute: typeof CurriculumIndexRoute
@@ -149,6 +175,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tutor': {
+      id: '/tutor'
+      path: '/tutor'
+      fullPath: '/tutor'
+      preLoaderRoute: typeof TutorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -198,6 +231,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProblemsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/chat': {
+      id: '/api/chat'
+      path: '/api/chat'
+      fullPath: '/api/chat'
+      preLoaderRoute: typeof ApiChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/curriculum/$module/': {
       id: '/curriculum/$module/'
       path: '/curriculum/$module'
@@ -217,6 +257,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  TutorRoute: TutorRoute,
+  ApiChatRoute: ApiChatRoute,
   ProblemsSlugRoute: ProblemsSlugRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
   CurriculumIndexRoute: CurriculumIndexRoute,
